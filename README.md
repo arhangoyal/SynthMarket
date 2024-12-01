@@ -2,8 +2,8 @@
 
 Testing trading algorithms in financial markets requires data that represents realistic and diverse market conditions. However, relying on historical data has limitations: it is often expensive, biased, and inflexible for evolving algorithm needs. Synthetic data provides an alternative, but traditional methods lack adaptability and realism.
 
-```Python version: 3.9.6```
-
+```Python version: 3.9.6``` <br>
+Package requirements in [requirements.txt](requirements.txt)
 
 ## Data Generator
 
@@ -15,3 +15,4 @@ Mathematical and usage details for each model are outlined in [data_generator/RE
 - [**BaseGenerator**](data_generator/BaseGenerator.py): Abstract base class defining a common interface for all data generators.
 - [**HestonModel**](data_generator/HestonModel.py): Stochastic volatility model for simulating stock prices with time-varying volatility.
 - [**JumpDiffusionModel**](data_generator/JumpDiffusionModel.py): Stock price model incorporating both continuous randomness and sudden jumps to mimic real-world price behavior.
+
