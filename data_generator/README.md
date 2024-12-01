@@ -39,9 +39,7 @@ The [`HestonModel`](HestonModel.py) simulates stock prices using the Heston stoc
    - $V_t$: Stochastic variance.
    - $W_t^S$: Brownian motion driving the stock price.
 2. **Variance Dynamics**:
-   $$
-   dV_t = \kappa (\theta - V_t) \, dt + \sigma_v \sqrt{V_t} \, dW_t^V
-   $$
+   $$dV_t = \kappa (\theta - V_t) \, dt + \sigma_v \sqrt{V_t} \, dW_t^V$$
    - $V_t$: Variance at time $t$.
    - $\kappa$: Speed of mean reversion.
    - $\theta$: Long-term mean variance.
@@ -49,9 +47,7 @@ The [`HestonModel`](HestonModel.py) simulates stock prices using the Heston stoc
    - $W_t^V$: Brownian motion driving the variance.
 3. **Correlation**:
    The two Brownian motions $W_t^S$ and $W_t^V$ are correlated:
-   $$
-   dW_t^S \cdot dW_t^V = \rho \, dt
-   $$
+   $$dW_t^S \cdot dW_t^V = \rho \, dt$$
    - $\rho$: Correlation coefficient between the stock price and variance.
 
 
@@ -64,9 +60,7 @@ The [`JumpDiffusionModel`](JumpDiffusionModel.py) extends the Geometric Brownian
 
 **Equations:**
 1. **Stock Price Dynamics**:
-   $$
-   dS_t = \mu S_t \, dt + \sigma S_t \, dW_t + S_t J_t
-   $$
+   $$dS_t = \mu S_t \, dt + \sigma S_t \, dW_t + S_t J_t$$
    - $S_t$: Stock price at time $t$.
    - $\mu$: Drift (expected return rate).
    - $\sigma$: Volatility of the stock price.
@@ -74,17 +68,11 @@ The [`JumpDiffusionModel`](JumpDiffusionModel.py) extends the Geometric Brownian
    - $J_t$: Jump term.
 2. **Jump Term ($J_t$)**:
    The jump component is modeled as:
-   $$
-   J_t = N_t \cdot Y
-   $$
+   $$J_t = N_t \cdot Y$$
    - $N_t$: Poisson process determining the number of jumps.
    - $Y$: Jump size, typically drawn from a normal distribution:
-     $$
-     Y \sim \mathcal{N}(\text{jump\_mean}, \text{jump\_std})
-     $$
+     $$Y \sim \mathcal{N}(\text{jump\_mean}, \text{jump\_std})$$
 3. **Poisson Process**:
    The number of jumps in a time interval $dt$ follows a Poisson distribution:
-   $$
-   P(N_t = k) = \frac{(\lambda \cdot dt)^k e^{-\lambda \cdot dt}}{k!}
-   $$
+   $$P(N_t = k) = \frac{(\lambda \cdot dt)^k e^{-\lambda \cdot dt}}{k!}$$
    - $\lambda$: Average number of jumps per unit time.
