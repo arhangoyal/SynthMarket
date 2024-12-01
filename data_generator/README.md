@@ -33,7 +33,7 @@ The [`HestonModel`](HestonModel.py) simulates stock prices using the Heston stoc
 **Equations:**
 
 1. **Stock Price Dynamics**:
-   $dS_t = \mu S_t \, dt + \sqrt{V_t} S_t \, dW_t^S$
+   $$dS_t = \mu S_t \, dt + \sqrt{V_t} S_t \, dW_t^S$$
    - $S_t$: Stock price at time $t$.
    - $\mu$: Drift (expected return rate).
    - $V_t$: Stochastic variance.
