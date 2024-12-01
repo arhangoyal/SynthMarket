@@ -36,18 +36,21 @@ class HestonModel:
         S = np.zeros(self.N)
         V = np.zeros(self.N)
         S[0], V[0] = self.S0, self.V0
+        epsilon = 1e-8  # Variance floor value
 
         for t in range(1, self.N):
-            # Correlated Brownian motions
+            # Correlated Brownian motions to create correlated noise for W_t^S and W_t^V
+            #   - W_t^S: Stock Price Brownian Motion captures the randomness in the stock price movement and introduces unpredictable fluctuations modulated by sqrt(variance)
+            #   - W_t^V: Variance Brownian Motion drives the randomness in the variance process and introduced random changes into variance
             Z1, Z2 = np.random.normal(size=2)
             W_S = Z1
             W_V = self.rho * Z1 + np.sqrt(1 - self.rho**2) * Z2
             
-            # Update variance (V_t)
+            # Variance Dynamics: Update variance (V_t)
             V[t] = V[t-1] + self.kappa * (self.theta - V[t-1]) * self.dt + self.sigma_v * np.sqrt(max(V[t-1], 0)) * np.sqrt(self.dt) * W_V
-            V[t] = max(V[t], 0)  # Ensure variance is non-negative
+            V[t] = max(V[t], epsilon)  # Ensure variance is non-negative and non-zero
             
-            # Update stock price (S_t)
+            # Stock Price Dynamics: Update stock price (S_t)
             S[t] = S[t-1] * np.exp((self.mu - 0.5 * V[t-1]) * self.dt + np.sqrt(max(V[t-1], 0)) * np.sqrt(self.dt) * W_S)
 
         return pd.DataFrame({'Time': np.linspace(0, self.N * self.dt, self.N), 'Price': S, 'Variance': V})
