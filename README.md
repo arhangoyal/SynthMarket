@@ -9,7 +9,7 @@ Package requirements in [requirements.txt](requirements.txt)
 
 The [`data_generator/`](data_generator/) folder contains implementations of different stock price data generation models. These models simulate realistic financial market data for testing trading strategies, algorithms, or other market analysis tools.
 
-Mathematical and usage details for each model are outlined in [data_generator/README.md](data_generator/README.md).
+Mathematical and usage details for each model are outlined in [data_generator/README.md](`data_generator/README.md`).
 
 ### **Contents**
 - [**BaseGenerator**](data_generator/BaseGenerator.py): Abstract base class defining a common interface for all data generators.
