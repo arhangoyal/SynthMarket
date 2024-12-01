@@ -71,7 +71,7 @@ The [`JumpDiffusionModel`](JumpDiffusionModel.py) extends the Geometric Brownian
    $$J_t = N_t \cdot Y$$
    - $N_t$: Poisson process determining the number of jumps.
    - $Y$: Jump size, typically drawn from a normal distribution:
-     $$Y \sim \mathcal{N}(\text{jump\_mean}, \text{jump\_std})$$
+     $Y \sim \mathcal{N}(jump_mean, jump_std)$
 3. **Poisson Process**:
    The number of jumps in a time interval $dt$ follows a Poisson distribution:
    $$P(N_t = k) = \frac{(\lambda \cdot dt)^k e^{-\lambda \cdot dt}}{k!}$$
